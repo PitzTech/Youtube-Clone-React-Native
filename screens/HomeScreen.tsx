@@ -1,7 +1,7 @@
-import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import React from "react"
+import { View, Text, Image, StyleSheet } from "react-native"
 
-export default function HomeScreen() {
+export default function HomeScreen(): JSX.Element {
 	return (
 		<View>
 			{/* Video Component */}
@@ -15,9 +15,9 @@ export default function HomeScreen() {
 				/>
 			</View>
 		</View>
-	);
+	)
 }
 
 const styles = StyleSheet.create({
 	thumbnail: { width: 250, height: 250 },
-});
+})
