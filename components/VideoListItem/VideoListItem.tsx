@@ -4,7 +4,14 @@ import { Entypo } from "@expo/vector-icons"
 
 import styles from "./styles"
 
-export default function VideoListItem(): JSX.Element {
+export default function VideoListItem({
+	username,
+	title,
+	views,
+	date,
+	videoUri,
+	avatarUri,
+}): JSX.Element {
 	return (
 		<View style={styles.videoCard}>
 			{/* Thumbnail */}
@@ -12,7 +19,7 @@ export default function VideoListItem(): JSX.Element {
 				<Image
 					style={styles.thumbnail}
 					source={{
-						uri: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/thumbnails/thumbnail1.jpeg",
+						uri: videoUri,
 					}}
 				/>
 				<View style={styles.timeContainer}>
@@ -28,17 +35,17 @@ export default function VideoListItem(): JSX.Element {
 					<Image
 						style={styles.avatarImage}
 						source={{
-							uri: "https://avatars.githubusercontent.com/u/53540002?v=4",
+							uri: avatarUri,
 						}}
 					/>
 				</View>
 				{/* Middle Container: Title, subtitle, etc. */}
 
 				<View style={styles.middleContainer}>
-					<Text style={styles.title}>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					<Text style={styles.title}>{title}</Text>
+					<Text style={styles.subtitle}>
+						{username} • {views} visualizações • há {date}
 					</Text>
-					<Text style={styles.subtitle}>PitzTech 1.5m 2 months ago</Text>
 				</View>
 				{/* Icon */}
 				<Entypo name="dots-three-vertical" size={16} color="white" />
