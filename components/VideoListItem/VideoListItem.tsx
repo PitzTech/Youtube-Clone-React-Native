@@ -4,14 +4,24 @@ import { Entypo } from "@expo/vector-icons"
 
 import styles from "./styles"
 
-export default function VideoListItem({
-	username,
-	title,
-	views,
-	date,
-	videoUri,
-	avatarUri,
-}): JSX.Element {
+interface videoData {
+	video: {
+		id: string
+		createdAt: string
+		title: string
+		thumbnail: string
+		videoUrl: string
+		duration: number
+		user: {
+			name: string
+			image?: string
+		}
+		views: number
+	}
+}
+
+export default function VideoListItem(props: videoData): JSX.Element {
+	const { video } = props
 	return (
 		<View style={styles.videoCard}>
 			{/* Thumbnail */}
@@ -19,11 +29,11 @@ export default function VideoListItem({
 				<Image
 					style={styles.thumbnail}
 					source={{
-						uri: videoUri,
+						uri: video.thumbnail,
 					}}
 				/>
 				<View style={styles.timeContainer}>
-					<Text style={styles.time}>15:23</Text>
+					<Text style={styles.time}>{video.duration}</Text>
 				</View>
 			</View>
 
@@ -35,16 +45,17 @@ export default function VideoListItem({
 					<Image
 						style={styles.avatarImage}
 						source={{
-							uri: avatarUri,
+							uri: video.user.image,
 						}}
 					/>
 				</View>
 				{/* Middle Container: Title, subtitle, etc. */}
 
 				<View style={styles.middleContainer}>
-					<Text style={styles.title}>{title}</Text>
+					<Text style={styles.title}>{video.title}</Text>
 					<Text style={styles.subtitle}>
-						{username} • {views} visualizações • há {date}
+						{video.user.name} • {video.views} visualizações • há{" "}
+						{video.createdAt}
 					</Text>
 				</View>
 				{/* Icon */}
