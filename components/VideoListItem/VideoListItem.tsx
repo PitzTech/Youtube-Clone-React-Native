@@ -22,6 +22,11 @@ interface videoData {
 
 export default function VideoListItem(props: videoData): JSX.Element {
 	const { video } = props
+	const minutes = Math.floor(video.duration / 60)
+	const seconds = new Intl.NumberFormat("pt-BR", {
+		maximumSignificantDigits: 2,
+	}).format(video.duration % 60)
+
 	return (
 		<View style={styles.videoCard}>
 			{/* Thumbnail */}
@@ -33,7 +38,9 @@ export default function VideoListItem(props: videoData): JSX.Element {
 					}}
 				/>
 				<View style={styles.timeContainer}>
-					<Text style={styles.time}>{video.duration}</Text>
+					<Text style={styles.time}>
+						{minutes}:{seconds}
+					</Text>
 				</View>
 			</View>
 
