@@ -23,9 +23,11 @@ interface videoData {
 export default function VideoListItem(props: videoData): JSX.Element {
 	const { video } = props
 	const minutes = Math.floor(video.duration / 60)
-	const seconds = new Intl.NumberFormat("pt-BR", {
-		maximumSignificantDigits: 2,
-	}).format(video.duration % 60)
+	const seconds = video.duration % 60
+
+	let viewString = video.views.toString()
+	if (video.views > 1e6) viewString = video.views / 1e6 + "m"
+	else if (video.views > 1e3) viewString = video.views / 1e3 + "k"
 
 	return (
 		<View style={styles.videoCard}>
@@ -57,11 +59,10 @@ export default function VideoListItem(props: videoData): JSX.Element {
 					/>
 				</View>
 				{/* Middle Container: Title, subtitle, etc. */}
-
 				<View style={styles.middleContainer}>
 					<Text style={styles.title}>{video.title}</Text>
 					<Text style={styles.subtitle}>
-						{video.user.name} • {video.views} visualizações • há{" "}
+						{video.user.name} • {viewString} visualizações • há{" "}
 						{video.createdAt}
 					</Text>
 				</View>
