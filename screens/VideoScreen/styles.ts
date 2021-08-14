@@ -25,6 +25,28 @@ const styles = StyleSheet.create({
 		fontSize: 14,
 		fontWeight: "500",
 	},
+
+	// action list
+	actionListContainer: {
+		marginVertical: 10,
+	},
+	actionListItem: {
+		width: 70,
+		height: 55,
+		justifyContent: "space-around",
+		alignItems: "center",
+	},
+	actionText: {
+		fontSize: 12,
+		color: "white",
+	},
+
+	// User Info
+	avatar: {
+		width: 40,
+		height: 40,
+		borderRadius: 20,
+	},
 })
 
 export default styles
