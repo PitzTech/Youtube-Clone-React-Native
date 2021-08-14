@@ -15,6 +15,7 @@ import video from "../../assets/data/video.json"
 import videos from "../../assets/data/videos.json"
 
 import VideoListItem from "../../components/VideoListItem"
+import VideoPlayer from "../../components/VideoPlayer"
 
 import styles from "./styles"
 
@@ -32,7 +33,11 @@ export default function VideoScreen(): JSX.Element {
 			}}
 		>
 			{/* Video Player */}
-			<Image style={styles.videoPlayer} source={{ uri: video.thumbnail }} />
+
+			<VideoPlayer
+				thumbnailUril={video.thumbnail}
+				videoUri={video.videoUrl}
+			/>
 
 			{/* Recommended Videos with video info on header */}
 
